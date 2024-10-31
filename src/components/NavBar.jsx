@@ -13,7 +13,6 @@ export default function NavBar() {
   return (
     <nav className="bg-white border-b border-[#dde1e6] justify-between items-center">
       <div className="max-w-screen-xl mx-auto p-4">
-        {/* Desktop */}
         <div className="hidden justify-between md:flex md:flex-row md:items-center md:justify-between">
           <img className="w-[170px] h-[30px]" src={Logo} alt="Logo" />
           <div className="flex items-center gap-4">
@@ -21,8 +20,6 @@ export default function NavBar() {
           </div>
           <LoginBtn />
         </div>
-
-        {/* Mobile */}
         <div className="md:hidden">
           <div className="flex justify-between items-center">
             <img className="w-[170px] h-[30px]" src={Logo} alt="Logo" />

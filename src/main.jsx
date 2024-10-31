@@ -6,6 +6,7 @@ import App from "./App.jsx";
 import Home from "./pages/Home.jsx";
 import Account from "./pages/Account.jsx";
 import Login from "./pages/Login.jsx";
+import Register from "./pages/Register.jsx";
 import KonsulTani from "./pages/KonsulTani.jsx";
 import BelajarTani from "./pages/BelajarTani.jsx";
 import SahabatTani from "./pages/SahabatTani.jsx";
@@ -43,6 +44,10 @@ const route = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
       },
     ],
   },

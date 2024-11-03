@@ -31,7 +31,7 @@ const FormRegister = () => {
       />
       <Button
         type="submit"
-        classname="text-primary-600 w-full my-6 bg-primary-200 hover:bg-primary-75"
+        classname="text-primary-600 rounded-lg h-11 p-2.5 w-full my-6 bg-primary-200 hover:bg-primary-75"
       >
         Daftar
       </Button>

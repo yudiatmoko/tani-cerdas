@@ -1,11 +1,12 @@
-import { Card, Button } from "react-bootstrap";
+import { Card } from "react-bootstrap";
+import Button from "./Button";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 const CardProduct = ({ image, title, text, children, ...props }) => {
   return (
     <Card
       {...props}
-      className="max-w-sm w-full bg-primary-50 border border-primary-75"
+      className="max-w-sm w-full bg-primary-50 border border-primary-75 flex flex-col justify-between"
     >
       <Card.Img
         variant="top"
@@ -19,15 +20,12 @@ const CardProduct = ({ image, title, text, children, ...props }) => {
         <Card.Text className="text-black text-base font-normal font-['Roboto'] leading-snug text-justify">
           {text}
         </Card.Text>
-        <Button
-          {...props}
-          className="py-4 btn-block mt-auto text-start text-black text-xl font-medium font-['Roboto'] hover:text-primary-200"
-        >
-          {children} <ArrowForwardIcon />
-        </Button>
       </Card.Body>
+      <Button classname="p-4 btn-block mt-auto text-start text-black text-xl font-medium font-['Roboto'] hover:text-primary-200">
+        {children} <ArrowForwardIcon />
+      </Button>
     </Card>
   );
-}
+};
 
 export default CardProduct;

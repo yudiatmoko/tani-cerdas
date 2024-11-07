@@ -1,4 +1,4 @@
-const Button = (props) => {
+const CustomButton = (props) => {
   const {
     classname = "h-10 font-semibold bg-primary-200",
     children = "Button",
@@ -12,4 +12,4 @@ const Button = (props) => {
   );
 };
 
-export default Button;
+export default CustomButton;

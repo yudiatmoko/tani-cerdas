@@ -16,7 +16,7 @@ export default function BelajarTani() {
     <>
       <div>
         <div
-          className="bg-no-repeat p-20 justify-center items-center flex"
+          className="bg-no-repeat lg:p-20 p-8 justify-center items-center flex"
           style={{
             height: "596px",
             backgroundImage: `url(${BannerImage})`,
@@ -44,9 +44,10 @@ export default function BelajarTani() {
               {level}
             </h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 place-content-center bg-primary-50 w-full h-auto gap-12 lg:gap-20 p-12 lg:p-20">
-              {groupedCourses[level].map((course, index) => (
+              {groupedCourses[level].map((course) => (
                 <CardEducation
-                  key={index}
+                  key={course.id}
+                  id={course.id}
                   image={course.image}
                   title={course.title}
                   level={course.level}

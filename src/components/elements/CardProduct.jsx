@@ -1,5 +1,5 @@
 import { Card } from "react-bootstrap";
-import Button from "./Button";
+import CustomButton from "./CustomButton";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 const CardProduct = ({ image, title, text, children, ...props }) => {
@@ -17,13 +17,13 @@ const CardProduct = ({ image, title, text, children, ...props }) => {
         <Card.Title className="font-['Roboto'] text-black text-xl font-bold leading-snug">
           {title}
         </Card.Title>
-        <Card.Text className="text-black text-base font-normal font-['Roboto'] leading-snug text-justify">
+        <Card.Text className="text-black text-base font-normal text-pretty font-['Roboto'] leading-snug">
           {text}
         </Card.Text>
       </Card.Body>
-      <Button classname="p-4 btn-block mt-auto text-start text-black text-xl font-medium font-['Roboto'] hover:text-primary-200">
+      <CustomButton classname="p-4 btn-block mt-auto text-start text-black text-xl font-medium font-['Roboto'] hover:text-primary-200">
         {children} <ArrowForwardIcon />
-      </Button>
+      </CustomButton>
     </Card>
   );
 };

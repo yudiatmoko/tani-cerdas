@@ -4,8 +4,10 @@ import { StyledEngineProvider, Button } from "@mui/material";
 import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
 import { AutoStories } from "@mui/icons-material";
 import { School } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 const CardEducation = ({
+  id,
   image,
   title,
   level,
@@ -14,6 +16,10 @@ const CardEducation = ({
   desc,
   ...props
 }) => {
+  const navigate = useNavigate();
+  const handleNavigate = (id) => {
+    navigate(`/belajar-tani/${id}`);
+  };
   return (
     <Card
       className="flex flex-col justify-between gap-4 p-6 lg:p-8 md:gap-8 w-full bg-primary-50 border border-black rounded-md"
@@ -49,6 +55,7 @@ const CardEducation = ({
       </Card.Body>
       <StyledEngineProvider injectFirst>
         <Button
+          onClick={() => handleNavigate(id)}
           variant="outlined"
           size="large"
           className="border-black rounded-md hover:bg-transparent capitalize text-center text-black text-lg font-medium font-['Roboto'] hover:text-primary-200 hover:border-primary-200"

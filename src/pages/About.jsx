@@ -34,7 +34,7 @@ export default function About() {
         <h2 className="text-center text-2xl font-semibold text-primary-600">
           Frequently Asked Question
         </h2>
-        <div className="max-w-xl mx-auto mt-8 space-y-4">
+        <div className="max-w-5xl mx-auto mt-8 space-y-4">
           {about.faq.map((faq, index) => (
             <button
               key={index}

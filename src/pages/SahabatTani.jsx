@@ -1,75 +1,72 @@
+import React from 'react';
+import { useState } from 'react';
+import greenhouseImage from '/about.jpeg'; // Ganti dengan path gambar utama
+import eventImage1 from '/about.jpeg'; // Ganti dengan path gambar event pertama
+import eventImage2 from '/about.jpeg'; // Ganti dengan path gambar event kedua
+import eventImage3 from '/about.jpeg'; // Ganti dengan path gambar event ketiga
 
 function SahabatTani() {
-  return (
-    <div className="min-h-screen bg-[--md-sys-color-background] font-sans">
-      {/* Header */}
-      <header
-        className="text-[--md-sys-color-on-primary] py-8 flex flex-col items-center"
-        style={{
-          backgroundImage: `url('path-to-your-image.jpg')`, // Ganti dengan path ke gambar Anda
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        {/* Logo */}
-        <img src="logo-placeholder.png" alt="Logo" className="mb-4" /> {/* Ganti dengan path logo */}
-        
-        {/* Container untuk teks utama dengan border */}
-        <div className="bg-primary-400 text-center px-8 py-6 rounded-lg border border-[--md-sys-color-primary] shadow-lg max-w-2xl">
-          <h1 className="text-3xl text-white font-bold text-primary-600">Improvisasi dan Inovasi</h1>
-          <p className="text-white mt-4">
-            Platform Tani Cerdas mendorong improvisasi dan inovasi di pertanian dengan memfasilitasi petani untuk mendapatkan teknik terbaru serta peralatan cerdas yang meningkatkan produktivitas secara berkelanjutan.
-          </p>
+  const [activeTab, setActiveTab] = useState('event');
+
+    return (
+      <div className="min-h-screen bg-gray-100 font-sans">
+        {/* Header */}
+        <header className="text-white py-8 flex justify-center items-center">
+          <img src={greenhouseImage} alt="Greenhouse" className="w-4/5 h-96 object-cover rounded-md" />
+        </header>
+    
+        {/* Tabs */}
+        <div className="flex justify-center mt-8">
+          <button
+            onClick={() => setActiveTab('event')}
+            className={`px-6 py-2 rounded-lg mr-2 ${activeTab === 'event' ? 'bg-green-700 text-white' : 'bg-white text-green-700 border border-green-700'}`}
+          >
+            Event
+          </button>
+          <button
+            onClick={() => setActiveTab('discussion')}
+            className={`px-6 py-2 rounded-lg ${activeTab === 'discussion' ? 'bg-green-700 text-white' : 'bg-white text-green-700 border border-green-700'}`}
+          >
+            Form Diskusi
+          </button>
         </div>
-      </header>
-
-      {/* Content Section */}
-      <main className="py-16 px-4 md:px-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Teknologi Pertanian */}
-          <div className="bg-[--md-sys-color-surface] rounded-lg shadow-lg overflow-hidden">
-            <img src="tech-image-placeholder.png" alt="Teknologi Pertanian" className="w-full h-48 object-cover" /> {/* Ganti dengan path gambar */}
-            <div className="p-6">
-              <h2 className="text-xl font-semibold mb-2 text-[--md-sys-color-on-surface]">Teknologi Pertanian</h2>
-              <p className="text-gray-700 mb-4">Memanfaatkan teknik dan metode pertanian yang lebih canggih untuk meningkatkan produktivitas dan efisiensi.</p>
-              <button className="bg-primary-400 text-[--md-sys-color-on-primary] px-4 py-2 rounded">Lihat Selengkapnya</button>
+    
+        {/* Content */}
+        <div className="mt-8 flex flex-col items-center">
+          {/* Event List */}
+          {activeTab === 'event' && (
+            <div className="w-full max-w-4xl px-4 md:px-0">
+              {[{
+                date: '29-01-2024', time: '12.00 WIB', title: 'Seminar Pengenalan Pertanian Digital', location: 'Gedung kecamatan gunung pati, kota semarang, jawa tengah', image: eventImage1
+              }, {
+                date: '29-01-2024', time: '12.00 WIB', title: 'Workshop Manajemen Hama dan Penyakit dengan Teknologi', location: 'Gedung kecamatan gunung pati, kota semarang, jawa tengah', image: eventImage2
+              }, {
+                date: '29-01-2024', time: '12.00 WIB', title: 'Workshop Optimalisasi Irigasi', location: 'Gedung kecamatan gunung pati, kota semarang, jawa tengah', image: eventImage3
+              }].map((event, index) => (
+                <div key={index} className="flex mb-6 bg-green-900 text-white rounded-lg overflow-hidden shadow-lg">
+                  {/* Image Section with Border */}
+                  <div className="border-r border-white">
+                    <img src={event.image} alt={event.title} className="w-4/5 object-cover h-40" />
+                  </div>
+    
+                  {/* Text Section with Separate Border */}
+                  <div className="p-4 w-2/3 border-l border-white">
+                    <div className="flex items-center text-sm mb-2">
+                      <span>{event.date}</span>
+                      <span className="mx-2">|</span>
+                      <span>{event.time}</span>
+                    </div>
+                    <h2 className="text-lg font-semibold mb-2">{event.title}</h2>
+                    <p className="text-sm mb-4">{event.location}</p>
+                    <button className="bg-white text-green-900 px-4 py-2 rounded-md">Daftar</button>
+                  </div>
+                </div>
+              ))}
             </div>
-          </div>
-
-          {/* Hama Penyakit */}
-          <div className="bg-[--md-sys-color-surface] rounded-lg shadow-lg overflow-hidden">
-            <img src="pest-image-placeholder.png" alt="Hama Penyakit" className="w-full h-48 object-cover" /> {/* Ganti dengan path gambar */}
-            <div className="p-6">
-              <h2 className="text-xl font-semibold mb-2 text-[--md-sys-color-on-surface]">Hama Penyakit</h2>
-              <p className="text-gray-700 mb-4">Mengenal hama dan penyakit tanaman beserta cara mencegah dan mengendalikannya secara tepat.</p>
-              <button className="bg-primary-400 text-[--md-sys-color-on-primary] px-4 py-2 rounded">Lihat Selengkapnya</button>
-            </div>
-          </div>
-
-          {/* Keselamatan Kerja */}
-          <div className="bg-[--md-sys-color-surface] rounded-lg shadow-lg overflow-hidden">
-            <img src="safety-image-placeholder.png" alt="Keselamatan Kerja" className="w-full h-48 object-cover" /> {/* Ganti dengan path gambar */}
-            <div className="p-6">
-              <h2 className="text-xl font-semibold mb-2 text-[--md-sys-color-on-surface]">Keselamatan Kerja</h2>
-              <p className="text-gray-700 mb-4">Tips dan panduan untuk keselamatan di lapangan agar terhindar dari risiko pekerjaan.</p>
-              <button className="bg-primary-400 text-[--md-sys-color-on-primary] px-4 py-2 rounded">Lihat Selengkapnya</button>
-            </div>
-          </div>
-
-          {/* Alat Pelengkap */}
-          <div className="bg-[--md-sys-color-surface] rounded-lg shadow-lg overflow-hidden">
-            <img src="equipment-image-placeholder.png" alt="Alat Pelengkap" className="w-full h-48 object-cover" /> {/* Ganti dengan path gambar */}
-            <div className="p-6">
-              <h2 className="text-xl font-semibold mb-2 text-[--md-sys-color-on-surface]">Alat Pelengkap</h2>
-              <p className="text-gray-700 mb-4">Terdiri dari cangkul, garpu, pisau, dan peralatan lainnya untuk keperluan bertani.</p>
-              <button className="bg-primary-400 text-[--md-sys-color-on-primary] px-4 py-2 rounded">Lihat Selengkapnya</button>
-            </div>
-          </div>
+          )}
         </div>
-      </main>
-    </div>
-  );
-}
+      </div>
+    );
+  }    
 
 export default SahabatTani;
-

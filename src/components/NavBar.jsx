@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Logo from "/logo-wtext.svg";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate, useLocation } from "react-router-dom";
-import Button from "./elements/Button";
+import CustomButton from "./elements/CustomButton";
 
 export default function NavBar() {
   const navigateTo = useNavigate();
@@ -20,12 +20,12 @@ export default function NavBar() {
           <div className="flex items-center gap-4">
             <NavBarMenu />
           </div>
-          <Button
+          <CustomButton
             onClick={() => navigateTo("/login")}
             classname="px-4 py-2 bg-brown-500 text-white font-medium rounded border-2 border-brown-500 hover:bg-brown-300"
           >
             Masuk
-          </Button>
+          </CustomButton>
         </div>
         <div className="lg:hidden">
           <div className="flex justify-between items-center">
@@ -40,12 +40,12 @@ export default function NavBar() {
           {isOpen && (
             <div className="flex flex-col items-center gap-2">
               <NavBarMenu />
-              <Button
+              <CustomButton
                 onClick={() => navigateTo("/login")}
                 classname="px-4 py-2 bg-brown-500 text-white font-medium rounded border-2 border-brown-500 hover:bg-brown-300"
               >
                 Masuk
-              </Button>
+              </CustomButton>
             </div>
           )}
         </div>
@@ -57,7 +57,7 @@ export default function NavBar() {
 function NavBarMenu() {
   return (
     <>
-      <MenuItem title={"Beranda"} path={`/beranda`} />
+      <MenuItem title={"Beranda"} path={`/`} />
       <MenuItem title={"KonsulTani"} path={`/konsul-tani`} />
       <MenuItem title={"BelajarTani"} path={`/belajar-tani`} />
       <MenuItem title={"SahabatTani"} path={`/sahabat-tani`} />

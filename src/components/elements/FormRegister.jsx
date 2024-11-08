@@ -1,5 +1,5 @@
 import GoogleIcon from "@mui/icons-material/Google";
-import Button from "./Button";
+import CustomButton from "./CustomButton";
 
 const FormRegister = () => {
   const doRegister = (event) => {};
@@ -29,12 +29,12 @@ const FormRegister = () => {
         name="confirm-password"
         placeholder="Konfirmasi kata sandi"
       />
-      <Button
+      <CustomButton
         type="submit"
         classname="text-primary-600 rounded-lg h-11 p-2.5 w-full my-6 bg-primary-200 hover:bg-primary-75"
       >
         Daftar
-      </Button>
+      </CustomButton>
       <h2 className="text-center text-white text-sm font-['Roboto']">
         Masuk dengan
       </h2>

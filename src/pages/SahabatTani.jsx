@@ -72,3 +72,4 @@ function SahabatTani() {
 }
 
 export default SahabatTani;
+

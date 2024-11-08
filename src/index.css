@@ -106,3 +106,102 @@
     --md-sys-color-surface-container-high: rgb(42 42 41);
     --md-sys-color-surface-container-highest: rgb(53 53 52);
 }
+
+.konsul-hero {
+    color: #FFF;
+    font-family: 'Inter', sans-serif;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 70px;
+    letter-spacing: -0.44px;
+  }
+
+.bg-custom {
+    background-color: #EFECEB;
+  }
+
+.desc-konsul {
+    display: flex;
+    width: 570px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+    flex-shrink: 0;
+}
+
+.flex-center-padding {
+  display: flex;
+  padding-right: 8px;
+  align-items: center;
+  gap: 16.677px;
+  border-right: 2px solid var(--Foundation-Green-G400, #496F27);
+}
+
+.button-chat{
+  display: flex;
+  height: 16px;
+  padding: 26px;
+  margin-top: 8px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  background: var(--Foundation-Green-G400, #496F27);
+}
+
+.button-service{
+  position: reltive;
+  padding-bottom: 40px;
+}
+
+.typhography-chat-button{
+  color: var(--Default-White, #FFF);
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%; /* 20px */
+  letter-spacing: 0.5px;
+}
+
+.typhography-nama{
+  color: #000;
+  font-family: Roboto;
+  font-size: 18.193px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;  
+}
+
+.typhography-desc{
+  color: #000;
+  font-family: Roboto;
+  font-size: 18.193px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.bg-daftar-pakar{
+  display: inline-flex;
+  padding-bottom: 32px;
+  align-items: center;
+  gap: 26px;
+}
+
+.service-item{
+  border-top: 1px solid #496F27;
+  padding-top: 32px;
+  border-left: 1px solid #496F27;
+  padding-left:65px;
+  
+  
+  &:nth-child(-n+2){
+    border-top: none;
+  }
+  &:nth-child(odd) {
+    border-left: none;
+    margin-left: auto;
+    padding-right: 65px;
+  }
+}

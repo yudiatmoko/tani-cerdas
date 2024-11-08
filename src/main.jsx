@@ -11,6 +11,9 @@ import KonsulTani from "./pages/KonsulTani.jsx";
 import BelajarTani from "./pages/BelajarTani.jsx";
 import SahabatTani from "./pages/SahabatTani.jsx";
 import About from "./pages/About.jsx";
+import EducationDetail from "./pages/EducationDetail.jsx";
+import Course from "./pages/Course.jsx";
+import DaftarPakar from "./pages/DaftarPakar.jsx";
 
 const route = createBrowserRouter([
   {
@@ -18,7 +21,7 @@ const route = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "/beranda",
+        path: "/",
         element: <Home />,
       },
       {
@@ -48,6 +51,18 @@ const route = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/belajar-tani/:id",
+        element: <EducationDetail />,
+      },
+      {
+        path: "/belajar-tani/:id/modules",
+        element: <Course />,
+      },
+      {
+        path: "/daftar-pakar",
+        element: <DaftarPakar />,
       },
     ],
   },

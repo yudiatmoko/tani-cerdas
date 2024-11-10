@@ -2,6 +2,7 @@ import Button from "../components/elements/Button";
 import konsultaniHero from '../assets/dummy/img/konsultani-hero.png';
 import pakar from "../data/dummy/pakar";
 import { Link } from "react-router-dom";
+import Chat from "./Chat";
 
 export default function DaftarPakar() {
   const currentYear = new Date().getFullYear(); // Mengambil tahun sekarang
@@ -45,7 +46,7 @@ export default function DaftarPakar() {
               <Button 
                 classname="button-chat typhography-chat-button w-fit ms-40"
               >
-              <Link to="/daftar-pakar">Chat</Link>
+              <Link to="/chat">Chat</Link>
               </Button>
             </div>
           </div>

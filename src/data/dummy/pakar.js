@@ -6,37 +6,43 @@ import PakarLima from "../../assets/dummy/img/pakar-lima.png"
 import PakarEnam from "../../assets/dummy/img/pakar-enam.png"
 
 const pakar = [
-    {
+    {   
+        expertId : 1,
         expertName : "Rahmat Sutisno S.P, M.P",
         expertDesc : "Dosen Pertanian di Universitas Negeri Jakarta",
         expertImage: PakarSatu,
         expertExp : "5 Tahun" 
     },
     {
+        expertId : 2,
         expertName : "Alice Wortner",
         expertDesc : "Peneliti tanaman",
         expertImage: PakarDua,
         expertExp : "5 Tahun"
     },
     {
+        expertId : 3,
         expertName : "Prof. Jurnie Feng S.P, M.P",
         expertDesc : "Peneliti tanaman sekaligus dosen Universitas Indonesia",
         expertImage: PakarTiga,
         expertExp : "15 Tahun"
     },
     {
+        expertId : 4,
         expertName : "Dudik Suryo",
         expertDesc : "Petani berpengalaman lebih dari 12 tahun",
         expertImage: PakarEmpat,
         expertExp : "12 Tahun"
     },
     {
+        expertId : 5,
         expertName : "Jumie Wong",
         expertDesc : "Petani muda yang berhasil meraup 10jt dalam sebulan",
         expertImage: PakarLima,
         expertExp : "3 Tahun"
     },
     {
+        expertId : 6,
         expertName : "Ada Sauxie",
         expertDesc : "Petani hidropononik berpengalaman lebih dari 7 tahun",
         expertImage: PakarEnam,

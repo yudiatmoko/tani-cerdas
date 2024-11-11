@@ -14,6 +14,8 @@ import About from "./pages/About.jsx";
 import EducationDetail from "./pages/EducationDetail.jsx";
 import Course from "./pages/Course.jsx";
 import DaftarPakar from "./pages/DaftarPakar.jsx";
+import Chat from "./pages/Chat.jsx";
+import Rate from "./pages/Rate.jsx";
 
 const route = createBrowserRouter([
   {
@@ -64,6 +66,14 @@ const route = createBrowserRouter([
         path: "/daftar-pakar",
         element: <DaftarPakar />,
       },
+      {
+        path:"/chat",
+        element: <Chat />
+      },
+      {
+        path:"/rate",
+        element: <Rate />
+      }
     ],
   },
 ]);

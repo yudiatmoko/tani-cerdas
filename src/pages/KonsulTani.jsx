@@ -2,81 +2,75 @@ import Button from "../components/elements/Button";
 import konsultaniHero from '../assets/dummy/img/konsultani-hero.png';
 import pakar from "../data/dummy/pakar";
 import { Link } from "react-router-dom";
-import DaftarPakar from "./DaftarPakar";
 
 export default function KonsulTani() {
   return (
     <>
+      {/* Hero Section */}
       <div className="flex flex-col-reverse lg:flex-row bg-primary-600 w-full h-auto mx-auto py-8 lg:py-20 justify-center items-center gap-4 lg:gap-20">
         <img
           src={konsultaniHero}
           alt="Sahabat Tani"
-          width={570}
-          height={626}
-          className="m-8 lg:m-0 lg:mr-29 my-8 lg:ml-[135px]"
+          className="w-full max-w-md lg:max-w-lg mx-8 lg:mx-0"
         />
-        <div className="flex flex-col items-start lg:mr-[135px] my-[236.5px]">
-          <div>
-            <h1 className="text-white text-[48px] lg:text-[54px] font-bold font-['Roboto'] leading-[77px]">
-              Akurat dan Tepat
-            </h1>
-            <p className="konsul-hero">
-              dari pakar yang sudah dijamin berkualitas
-            </p>
-          </div>
+        <div className="flex flex-col items-start px-8 lg:px-0 lg:mr-[135px] my-8 lg:my-0">
+          <h1 className="text-white text-3xl lg:text-[54px] font-bold font-['Roboto'] leading-tight lg:leading-[77px]">
+            Akurat dan Tepat
+          </h1>
+          <p className="text-white text-lg lg:text-xl mt-2">
+            dari pakar yang sudah dijamin berkualitas
+          </p>
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row bg-costum w-full h-auto mx-auto p-8 lg:p-20 justify-start items-center gap-8 lg:gap-16 rounded-tl-[40px] rounded-tr-[40px]">
-        <div className="flex flex-col items-start gap-[7px] w-[570px] shrink-0 ml-[135px] my-[143.5px]">
-          <div className="flex justify-center gap-4">
-            <h1 className="text-black font-inter text-[48.2px] font-medium leading-[77.1px] tracking-[-0.53px]">
+      {/* Content Section */}
+      <div className="flex flex-col lg:flex-row bg-custom w-full h-auto mx-auto p-8 lg:p-20 justify-start items-center gap-8 lg:gap-16 rounded-tl-[40px] rounded-tr-[40px]">
+        <div className="flex flex-col items-start gap-4 w-full lg:w-[570px] px-4 lg:px-0">
+          <div className="flex flex-wrap gap-2 lg:gap-4">
+            <h1 className="text-black text-3xl lg:text-[48.2px] font-medium">
               ingin
             </h1>
-            <h1 className="bg-[#496F27] text-white font-inter text-[48.2px] font-bold leading-[77.1px] tracking-[-0.53px]">
+            <h1 className="bg-[#496F27] text-white text-3xl lg:text-[48.2px] font-bold px-2">
               memperdalam
             </h1>
           </div>
-          <div className="flex justify-center gap-4">
-            <h1 className="text-black font-inter text-[48.2px] font-medium leading-[77.1px] tracking-[-0.53px]">
+          <div className="flex flex-wrap gap-2 lg:gap-4">
+            <h1 className="text-black text-3xl lg:text-[48.2px] font-medium">
               mengenai
             </h1>
-            <h1 className="bg-[#496F27] text-white font-inter text-[48.2px] font-bold leading-[77.1px] tracking-[-0.53px]">
+            <h1 className="bg-[#496F27] text-white text-3xl lg:text-[48.2px] font-bold px-2">
               pertanian?
             </h1>
           </div>
-          <h1 className="text-black font-inter text-[48.2px] font-medium leading-[77.1px] tracking-[-0.53px]">
+          <h1 className="text-black text-3xl lg:text-[48.2px] font-medium mt-2">
             Yuk pakai Pakar ahli kita
           </h1>
           <Button 
-            classname="px-4 py-2 bg-brown-300 text-white font-medium text-lg rounded border-2 border-brown-300 hover:bg-brown-200"
+            classname="mt-4 px-4 py-2 bg-brown-300 text-white font-medium text-lg rounded border-2 border-brown-300 hover:bg-brown-200"
           >
             <Link to="/daftar-pakar">Lihat Pakar</Link>
           </Button>
         </div>
 
-        <div className="flex flex-wrap gap-[50px] justify-start w-full lg:w-[570px] ml-[135px] mr-[135px] my-[15px]">
-          {pakar.map((pakar,index)=>(
+        <div className="flex flex-wrap gap-6 justify-start w-full lg:w-[570px] px-4 lg:px-0">
+          {pakar.map((pakar, index) => (
             <div 
-              className="flex flex-col gap-4 items-center w-full sm:w-1/4"
+              className="flex flex-col gap-2 items-center w-full sm:w-1/2 md:w-1/3 lg:w-1/4"
               key={index}
             >
               <img
-                className="rounded-[8px]"
-                width={200  }
-                height={200}
+                className="rounded-[8px] w-36 h-36 lg:w-48 lg:h-48 object-cover"
                 src={pakar.expertImage}
-                alt=""
+                alt={pakar.expertName}
               />
-              <div className="flex flex-col items-center">
-                <h5 className="text-black text-center font-inter font-size: 12px font-style: normal font-weight: 700 line-height: 24px letter-spacing: -0.132px font-bold">
+              <div className="flex flex-col items-center text-center">
+                <h5 className="text-black text-sm font-semibold">
                   {pakar.expertName}
                 </h5>
-                <p className="text-black text-center font-inter font-size: 10px font-style: normal font-weight: 500; line-height: 16px letter-spacing: -0.11px">
+                <p className="text-black text-xs font-medium">
                   {pakar.expertDesc}
                 </p>
               </div>
-
             </div>
           ))}
         </div>
@@ -84,4 +78,3 @@ export default function KonsulTani() {
     </>
   );
 }
-

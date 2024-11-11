@@ -67,7 +67,7 @@ export default function About() {
             <img
               src={about.contactImage}
               alt="Hubungi Kami"
-              className="w-full h-48 object-cover rounded-lg"
+              className="w-4/5 h-70 object-cover rounded-lg"
             />
           </div>
         </div>

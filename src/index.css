@@ -205,3 +205,11 @@
     padding-right: 65px;
   }
 }
+
+.background{
+  background: var(--Foundation-Brown-B50, #EFECEB);
+}
+
+.bg-jadwal-book{
+  background: var(--Foundation-Green-G500, #273C15)
+}

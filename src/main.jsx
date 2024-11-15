@@ -16,6 +16,7 @@ import Course from "./pages/Course.jsx";
 import DaftarPakar from "./pages/DaftarPakar.jsx";
 import Chat from "./pages/Chat.jsx";
 import Rate from "./pages/Rate.jsx";
+import Book from "./pages/PakarBook.jsx";
 
 const route = createBrowserRouter([
   {
@@ -73,6 +74,10 @@ const route = createBrowserRouter([
       {
         path:"/rate",
         element: <Rate />
+      },
+      {
+        path:"/book",
+        element:<Book />
       }
     ],
   },

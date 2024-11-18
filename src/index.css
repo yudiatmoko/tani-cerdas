@@ -211,5 +211,6 @@
 }
 
 .bg-jadwal-book{
-  background: var(--Foundation-Green-G500, #273C15)
+  background: var(--Foundation-Green-G500, #273C15);
+  height: 561px;
 }

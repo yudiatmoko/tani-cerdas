@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const AuthLayout = (props) => {
   const { type, children } = props;
   return (
-    <div class="flex-row px-16 py-4">
+    <div className="flex-row px-16 py-4">
       <div className="space-y-6 justify-center">
         <Header />
         <div>

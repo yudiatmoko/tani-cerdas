@@ -1,8 +1,10 @@
 import { Card } from "react-bootstrap";
 import CustomButton from "./CustomButton";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { useNavigate } from "react-router-dom";
 
-const CardProduct = ({ image, title, text, children, ...props }) => {
+const CardProduct = ({ image, title, text, children, path, ...props }) => {
+  const navigate = useNavigate();
   return (
     <Card
       {...props}
@@ -21,7 +23,10 @@ const CardProduct = ({ image, title, text, children, ...props }) => {
           {text}
         </Card.Text>
       </Card.Body>
-      <CustomButton classname="p-4 btn-block mt-auto text-start text-black text-xl font-medium font-['Roboto'] hover:text-primary-200">
+      <CustomButton
+        onClick={() => navigate(path)}
+        classname="p-4 btn-block mt-auto text-start text-black text-xl font-medium font-['Roboto'] hover:text-primary-200"
+      >
         {children} <ArrowForwardIcon />
       </CustomButton>
     </Card>

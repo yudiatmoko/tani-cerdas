@@ -6,8 +6,8 @@ import LoginBanner from "/login-banner.png"
 
 const Login = () => {
   return (
-    <div class="flex justify-center items-center min-h-screen min-w-full bg-primary-75 px-4 sm:px-8 lg:px-16">
-      <div class="bg-primary-600 min-h-fit px-1 py-1 rounded-xl flex flex-col lg:flex-row justify-center items-center">
+    <div className="flex justify-center items-center min-h-screen min-w-full bg-primary-75 px-4 sm:px-8 lg:px-16">
+      <div className="bg-primary-600 min-h-fit px-1 py-1 rounded-xl flex flex-col lg:flex-row justify-center items-center">
         <AuthLayout type="login">
           <FormLogin />
         </AuthLayout>

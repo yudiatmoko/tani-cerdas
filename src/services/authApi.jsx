@@ -19,19 +19,3 @@ export const register = async (register) => {
     throw error;
   }
 };
-
-// export const register = async (registerData) => {
-//     if (!isTokenValid()) {
-//       console.warn("Token is invalid. Please log in again.");
-//       window.location.href = '/login';
-//       return;
-//     }
-  
-//     try {
-//       const response = await axiosInstance.post("/register", registerData);
-//       return response.data;
-//     } catch (error) {
-//       console.error("Error posting data:", error);
-//       throw error;
-//     }
-//   };

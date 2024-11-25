@@ -5,6 +5,7 @@ import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
 import { AutoStories } from "@mui/icons-material";
 import { School } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import { addUserCourses } from "../../services/educationApi";
 
 const CardEducation = ({
   id,
@@ -25,6 +26,24 @@ const CardEducation = ({
       setShowLoginModal(true);
     } else {
       navigate(`/belajar-tani/${id}`);
+      handleAddUserCourses(id);
+    }
+  };
+
+  const handleAddUserCourses = async (id) => {
+    const userId = localStorage.getItem("userId");
+    const courseId = id;
+    const userCourseData = {
+      user_id: userId,
+      course_id: courseId,
+    };
+
+    try {
+      const response = await addUserCourses(userCourseData);
+      console.log(response);
+    } catch (error) {
+      console.error(error || "Error adding user course");
+    } finally {
     }
   };
 
@@ -36,7 +55,7 @@ const CardEducation = ({
       >
         <Card.Header className="flex flex-col md:flex-row items-stretch gap-4 md:gap-6">
           <Card.Img
-            src={image}
+            src={`http://localhost:3002/images/${image}`}
             variant="top-left"
             className="h-44 w-full lg:h-[170px] lg:min-w-40 lg:max-w-56 border border-black rounded-md object-cover"
           />
@@ -80,10 +99,10 @@ const CardEducation = ({
             <h3 className="text-lg font-semibold mb-4">
               Anda harus login jika ingin mengakses materi
             </h3>
-            <div className="flex justify-start items-center gap-2">
+            <div className="flex justify-end items-center gap-2">
               <button
                 onClick={() => navigate("/login")}
-                className="bg-green-700 text-white px-4 py-2 rounded-md"
+                className="bg-primary-200 text-white px-4 py-2 rounded-md"
               >
                 Login
               </button>

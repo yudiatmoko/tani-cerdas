@@ -1,16 +1,38 @@
 import { Card } from "react-bootstrap";
 import BannerImage from "/education-banner.png";
 import CardEducation from "../components/elements/CardEducation";
-import Courses from "../data/dummy/courses";
+import { getAllCourses } from "../services/educationApi";
+import { useEffect, useState } from "react";
+import Spinner from "../components/elements/Spinner";
 
 export default function BelajarTani() {
-  const groupedCourses = Courses.reduce((acc, course) => {
-    if (!acc[course.level]) {
-      acc[course.level] = [];
+  const [groupedCourses, setGroupedCourses] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchAllCourse();
+  }, []);
+
+  const fetchAllCourse = async () => {
+    setLoading(true);
+    try {
+      const response = await getAllCourses();
+      const data = response.reduce((acc, course) => {
+        if (!acc[course.level]) {
+          acc[course.level] = [];
+        }
+        acc[course.level].push(course);
+        return acc;
+      }, {});
+      setGroupedCourses(data);
+    } catch (error) {
+      console.error(
+        error.response?.data?.message || "Error fetching all courses"
+      );
+    } finally {
+      setLoading(false);
     }
-    acc[course.level].push(course);
-    return acc;
-  }, {});
+  };
 
   return (
     <>
@@ -38,27 +60,33 @@ export default function BelajarTani() {
         </div>
       </div>
       <div>
-        {Object.keys(groupedCourses).map((level) => (
-          <div key={level}>
-            <h2 className="text-center text-3xl font-bold font-['Roboto'] py-8 bg-primary-400 text-white">
-              {level}
-            </h2>
-            <div className="grid grid-cols-1 lg:grid-cols-2 place-content-center bg-primary-50 w-full h-auto gap-12 lg:gap-20 p-12 lg:p-20">
-              {groupedCourses[level].map((course) => (
-                <CardEducation
-                  key={course.id}
-                  id={course.id}
-                  image={course.image}
-                  title={course.title}
-                  level={course.level}
-                  modules={course.modules}
-                  duration={course.duration}
-                  desc={course.desc}
-                />
-              ))}
-            </div>
+        {loading ? (
+          <div className="flex justify-center min-h-screen items-center h-40">
+            <Spinner />
           </div>
-        ))}
+        ) : (
+          Object.keys(groupedCourses).map((level) => (
+            <div key={level}>
+              <h2 className="text-center text-3xl font-bold font-['Roboto'] py-8 bg-primary-400 text-white">
+                {level}
+              </h2>
+              <div className="grid grid-cols-1 lg:grid-cols-2 place-content-center bg-primary-50 w-full h-auto gap-12 lg:gap-20 p-12 lg:p-20">
+                {groupedCourses[level].map((course) => (
+                  <CardEducation
+                    key={course.id}
+                    id={course.id}
+                    image={course.image}
+                    title={course.title}
+                    level={course.level}
+                    modules={course.modulesNum}
+                    duration={course.duration}
+                    desc={course.desc}
+                  />
+                ))}
+              </div>
+            </div>
+          ))
+        )}
       </div>
     </>
   );

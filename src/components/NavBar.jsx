@@ -7,7 +7,7 @@ import CustomButton from "./elements/CustomButton";
 export default function NavBar() {
   const navigateTo = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
-  const [showLoginButton, setShowLoginButton] = useState(true);
+  const [showLoginButton, setShowLoginButton] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);

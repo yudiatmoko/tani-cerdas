@@ -1,42 +1,65 @@
-import { useState, useEffect } from "react"; // Import useState and useEffect
+import { useState, useEffect } from "react"; 
 import Button from "../components/elements/Button";
-import konsultaniHero from '../assets/dummy/img/konsultani-hero.png';
-import pakar from "../data/dummy/pakar";
-import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
+import { getAkunByRole } from "../services/akunapi";
 
 export default function DaftarPakar() {
-  const currentYear = new Date().getFullYear(); // Get the current year
-  const navigate = useNavigate(); // Initialize the navigate function
+  const currentYear = new Date().getFullYear();
+  const navigate = useNavigate();
 
-  const [bookedPakar, setBookedPakar] = useState(null); // Track which pakar has been booked
+  const [pakarList, setPakarList] = useState([]);
+  const [bookedPakar, setBookedPakar] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Check if there is a pakar stored in sessionStorage
-    const storedPakar = sessionStorage.getItem('bookedPakar');
-    if (storedPakar) {
-      setBookedPakar(JSON.parse(storedPakar)); // If found, set it in state
-    }
+    fetchAkunByRole();
   }, []);
 
+  const fetchAkunByRole = async () => {
+    setLoading(true);
+    try {
+      const response = await getAkunByRole(2);
+      console.log("Fetched data:", response); // Debug respons
+      if (Array.isArray(response)) {
+        setPakarList(response);
+      } else if (response?.data) {
+        setPakarList(response.data); // Jika respons berisi objek dengan array di dalamnya
+      } else {
+        console.warn("Unexpected response format:", response);
+        setPakarList([]);
+      }
+    } catch (error) {
+      console.error("Error fetching akun by role:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleChatClick = (pakarData) => {
-    navigate("/chat", {
-      state: pakarData, // Pass the expert data to the Chat page
-    });
+    navigate("/chat", { state: pakarData });
   };
 
   const handleBookClick = (pakarData) => {
-    setBookedPakar(pakarData); // Mark the pakar as booked
-    navigate("/book", { state: pakarData }); // Redirect to the Book page with pakar data
+    setBookedPakar(pakarData);
+    navigate("/book", { state: pakarData });
   };
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (!Array.isArray(pakarList) || pakarList.length === 0) {
+    return <p>Tidak ada data pakar ditemukan</p>;
+  }
 
   return (
     <div className="min-h-screen justify-center items-center px-96">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 place-items-center place-content-center">
-        {pakar.map((pakar, index) => {
-          const experience = currentYear - pakar.startYear;
-          const rating = 4;
+        {pakarList.map((pakar, index) => {
+          const experiences = currentYear - pakar.startYear;
+          const rating = pakar.rating || 4;
 
-          const isBooked = bookedPakar && bookedPakar.expertName === pakar.expertName; // Check if this pakar is booked
+          const isBooked = bookedPakar && bookedPakar.name === pakar.name;
 
           return (
             <div className="bg-daftar-pakar service-item w-full" key={index}>
@@ -44,20 +67,16 @@ export default function DaftarPakar() {
                 className="rounded-[8px]"
                 width={176}
                 height={235}
-                src={pakar.expertImage}
-                alt={pakar.expertName}
+                src={pakar.expertImage || "/default-image.png"}
+                alt={pakar.name}
               />
               <div className="flex flex-col justify-start w-full gap-4">
-                <h5 className="typhography-nama">
-                  {pakar.expertName}
-                </h5>
+                <h5 className="typhography-nama">{pakar.name}</h5>
                 <p className="text-black text-left font-inter text-[10px] font-medium leading-4 tracking-tight">
                   {pakar.expertDesc}
                 </p>
                 <div className="flex items-center space-x-2">
-                  <div className="flex-center-padding">
-                    {pakar.expertExp}
-                  </div>
+                  <div className="flex-center-padding">{experiences} years</div>
                   <div className="flex text-yellow-500">
                     {[...Array(5)].map((_, i) => (
                       i < rating ? <span key={i}>★</span> : <span key={i} className="text-gray-300">★</span>
@@ -66,9 +85,9 @@ export default function DaftarPakar() {
                 </div>
                 <Button
                   classname={`button-${isBooked ? "chat" : "book"} typhography-${isBooked ? "chat" : "book"}-button w-fit ms-40`} 
-                  onClick={() => isBooked ? handleChatClick(pakar) : handleBookClick(pakar)} 
+                  onClick={() => isBooked ? handleChatClick(pakar) : handleBookClick(pakar)}
                 >
-                  {isBooked ? "Chat" : "Book"} {/* Change text based on booked status */}
+                  {isBooked ? "Chat" : "Book"}
                 </Button>
               </div>
             </div>

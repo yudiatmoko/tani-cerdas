@@ -146,22 +146,12 @@
   justify-content: center;
   align-items: center;
   border-radius: 4px;
-  background: var(--Foundation-Green-G400, #496F27);
+  
 }
 
 .button-service{
   position: reltive;
   padding-bottom: 40px;
-}
-
-.typhography-chat-button{
-  color: var(--Default-White, #FFF);
-  font-family: Roboto;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 100%; /* 20px */
-  letter-spacing: 0.5px;
 }
 
 .typhography-nama{

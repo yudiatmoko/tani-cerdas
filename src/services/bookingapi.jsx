@@ -1,13 +1,14 @@
 import { axiosInstance, isTokenValid } from "./api";
 
 export const getBookingByUserId = async (id) => {
+    const token = localStorage.getItem("token");
     if (!isTokenValid()) {
         console.warn("Token is invalid. Please log in again.");
         window.location.href = "/login";
         return;
       }
     try {
-        const response = await axiosInstance.get(`/booking/${id}`, {
+        const response = await axiosInstance.get(`/booking/user/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -34,6 +35,7 @@ export const deleteBookingById = async (id) => {
 };
 
 export const addBooking = async (bookingData) => {
+    
     if (!isTokenValid()) {
         console.warn("Token is invalid. Please log in again.");
         window.location.href = "/login";

@@ -5,20 +5,16 @@ import PakarEmpat from "../../assets/dummy/img/pakar-empat.png"
 import PakarLima from "../../assets/dummy/img/pakar-lima.png"
 import PakarEnam from "../../assets/dummy/img/pakar-enam.png"
 
-const pakar = [
+const pakaria = [
     {   
-        expertId : 1,
-        expertName : "Rahmat Sutisno S.P, M.P",
-        expertDesc : "Dosen Pertanian di Universitas Negeri Jakarta",
+        
         expertImage: PakarSatu,
-        expertExp : "5 Tahun" 
+        
     },
     {
-        expertId : 2,
-        expertName : "Alice Wortner",
-        expertDesc : "Peneliti tanaman",
+       
         expertImage: PakarDua,
-        expertExp : "5 Tahun"
+        
     },
     {
         expertId : 3,
@@ -50,4 +46,4 @@ const pakar = [
     },
 ]
 
-export default pakar;
+export default pakaria;

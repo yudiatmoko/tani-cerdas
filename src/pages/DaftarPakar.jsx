@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import Button from "../components/elements/Button";
 import { useNavigate } from "react-router-dom";
 import { getAkunByRole } from "../services/akunapi";
+import foto from "../assets/dummy/img/download.png"
+import pakaria from "../data/dummy/pakar";
 
 export default function DaftarPakar() {
   const currentYear = new Date().getFullYear();
@@ -36,10 +38,13 @@ export default function DaftarPakar() {
   };
 
   const handleChatClick = (pakarData) => {
+    localStorage.setItem("pakarId", pakarData.id)
+    setBookedPakar(pakarData)
     navigate("/chat", { state: pakarData });
   };
 
   const handleBookClick = (pakarData) => {
+    localStorage.setItem("pakarId" , pakarData.id)
     setBookedPakar(pakarData);
     navigate("/book", { state: pakarData });
   };
@@ -55,28 +60,32 @@ export default function DaftarPakar() {
   return (
     <div className="min-h-screen justify-center items-center px-96">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 place-items-center place-content-center">
+        
         {pakarList.map((pakar, index) => {
           const experiences = currentYear - pakar.startYear;
           const rating = pakar.rating || 4;
-
+            
           const isBooked = bookedPakar && bookedPakar.name === pakar.name;
 
           return (
             <div className="bg-daftar-pakar service-item w-full" key={index}>
+              
               <img
+                
                 className="rounded-[8px]"
                 width={176}
                 height={235}
-                src={pakar.expertImage || "/default-image.png"}
+                src={foto}
                 alt={pakar.name}
               />
+              
               <div className="flex flex-col justify-start w-full gap-4">
                 <h5 className="typhography-nama">{pakar.name}</h5>
                 <p className="text-black text-left font-inter text-[10px] font-medium leading-4 tracking-tight">
                   {pakar.expertDesc}
                 </p>
                 <div className="flex items-center space-x-2">
-                  <div className="flex-center-padding">{experiences} years</div>
+                  <div className="flex-center-padding">4 years</div>
                   <div className="flex text-yellow-500">
                     {[...Array(5)].map((_, i) => (
                       i < rating ? <span key={i}>★</span> : <span key={i} className="text-gray-300">★</span>

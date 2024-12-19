@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Logo from "/logo-wtext.svg";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import CustomButton from "./elements/CustomButton";
 
 export default function NavBar() {

@@ -93,7 +93,7 @@ function MenuItem({ title, path }) {
   const isActive = location.pathname === path;
   return (
     <div className="px-2 py-3 justify-center items-center gap-2 flex">
-      <Link href={path}>
+      <Link to={path}>
         <div
           className={`h-10 px-2 py-3 rounded-[5px] inline-flex items-center gap-2 ${
             isActive ? "bg-brown-100 text-white" : "text-black"

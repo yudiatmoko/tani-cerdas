@@ -55,7 +55,7 @@ const CardEducation = ({
       >
         <Card.Header className="flex flex-col md:flex-row items-stretch gap-4 md:gap-6">
           <Card.Img
-            src={`http://localhost:3002/images/${image}`}
+            src={`https://tani-cerdas-backend.vercel.app/images/${image}`}
             variant="top-left"
             className="h-44 w-full lg:h-[170px] lg:min-w-40 lg:max-w-56 border border-black rounded-md object-cover"
           />

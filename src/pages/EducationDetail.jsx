@@ -54,7 +54,7 @@ const EducationDetail = () => {
           <div className="flex flex-col lg:flex-row justify-between items-center gap-8 md:gap-12">
             <img
               className="w-full lg:w-[470px] h-auto lg:h-[312px] border border-black rounded-md object-cover"
-              src={`http://localhost:3002/images/${course.image}`}
+              src={`https://tani-cerdas-backend.vercel.app/images/${course.image}`}
               alt="course"
             />
             <div className="flex flex-col items-start space-y-4 md:space-y-8">

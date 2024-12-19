@@ -91,10 +91,9 @@ function NavBarMenu() {
 function MenuItem({ title, path }) {
   const location = useLocation();
   const isActive = location.pathname === path;
-
   return (
     <div className="px-2 py-3 justify-center items-center gap-2 flex">
-      <a href={path}>
+      <Link href={path}>
         <div
           className={`h-10 px-2 py-3 rounded-[5px] inline-flex items-center gap-2 ${
             isActive ? "bg-brown-100 text-white" : "text-black"
@@ -108,7 +107,7 @@ function MenuItem({ title, path }) {
             {title}
           </span>
         </div>
-      </a>
+      </Link>
     </div>
   );
 }
